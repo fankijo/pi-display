@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#copyright fankijo
+
 #Variables
 MENUSTATE=1
 SUBMENUSTATE=0
@@ -284,18 +286,22 @@ run_action() {
 	#Decides which actions should be performed
 	
 	#Example Action
+	#Change ID $1 in if statement to the Menu ID of your action
 	if (( $1 == 999 )); then
 		#Run Action
 		OUTPUT="$(command goes here)"
 		#Give Feedback
-		if [[ $OUTPUT = *"Turning on bulb"* ]]; then
-			set_display_feedback "Erfolgreich!" "" "timeout in seconds"
+		#Check if output is like defined in if statement
+		if [[ $OUTPUT = *"output of command goes here"* ]]; then
+			#Output if commands output matches if statement
+			set_display_feedback "Line 1 output" "Line 2 Output" "timeout in seconds"
+			#If output doesnt match if statement
 		else
 			set_display_feedback "Error" "" "timeout in seconds"
 		fi
 	fi
 	
-	
+	#Works with WIFI LED controller for Magic Home App
 	#Turn LEDs on
 	if (( $1 == 11 )); then
 		#python -m flux_led -s
@@ -440,6 +446,7 @@ run_action() {
 }
 
 #Set Display for the first time
+#Displaying menu 10 like defined in variables on top of file
 set_display "${menu[$MENUSTATE,$SUBMENUSTATE]}" "              ->"
 
 #Listen for arrow keys and call function for pressed key
