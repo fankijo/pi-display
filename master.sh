@@ -402,7 +402,7 @@ run_action() {
 	#FritzBox Hosts active
 	if (( $1 == 21 )); then
 		#Run Action
-		OUTPUT="$(/display/fb-info.sh --hostsonline)"
+		OUTPUT="$(/display/fritzbox-tools/fb-info.sh --hostsonline)"
 		echo $OUTPUT Hosts online
 		set_display_output "$OUTPUT Hosts online" ""
 	fi
